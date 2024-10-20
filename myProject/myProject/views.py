@@ -230,7 +230,7 @@ def editProfile(request):
         current_user.email=email
         current_user.first_name=first_name
         current_user.last_name=last_name
-        current_user.profile_pic=profile_pic
+        current_user.Profile_Pic=profile_pic
         
         
         try:

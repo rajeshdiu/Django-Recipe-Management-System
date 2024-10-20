@@ -70,10 +70,22 @@
     <img src="/{{request.user.Profile_Pic }}" alt="Profile Picture">
     <h2>{{ request.user.first_name }} {{ request.user.last_name }}</h2>
     <p><strong>Email:</strong> {{ request.user.email }}</p>
+
+    {% if request.user.user_type == 'creator' %}
     <p><strong>Specialties:</strong> {{ request.user.creatorsProfile.Specialties }}</p>
     <p><strong>Followers:</strong> {{ request.user.creatorsProfile.Followers }}</p>
     <p><strong>Achievements:</strong> {{ request.user.creatorsProfile.Achievements }}</p>
     <p><strong>Bio:</strong> {{ request.user.creatorsProfile.Bio }}</p>
+    {% endif %}
+
+    
+    {% if request.user.user_type == 'viewers' %}
+
+    <p><strong>Interests:</strong> {{ request.user.viewersProfile.Interests }}</p>
+    
+    {% endif %}
+
+
 
     <div class="button-container">
 
@@ -82,7 +94,7 @@
         {% if request.user.user_type == 'creator' %}
             <a href="{% url 'addRecipePage' %}" class="action-link">Add Recipe</a>
             <a href="{% url 'createdRecipe' %}" class="action-link">Created Recipes</a>
-        {% endif %}
+            {% endif %}
     </div>
 </div>
 {% endblock body %}
